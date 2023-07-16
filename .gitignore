@@ -11,7 +11,7 @@ npm-debug.*
 web-build/
 
 serviceAccountKey.json
-
+.env
 # macOS
 .DS_Store
 
