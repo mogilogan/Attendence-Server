@@ -3,10 +3,9 @@ const cors  =require('cors');
 const admin = require('firebase-admin');
 
 const serviceAccount = require('./serviceAccountKey.json');
-const serviceAccountKey = JSON.parse(process.env.UNI_DOMAIN)
 // Initialize Firebase Admin SDK
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccountKey),
+  credential: admin.credential.cert(serviceAccount),
 });
 
 const app = express();
@@ -30,7 +29,6 @@ app.get('/percentage', async (req, res) => {
   const db = admin.firestore();
   try {
     const { documentId } = req.query;
-
     if (!documentId) {
       return res.status(400).json({ error: 'Missing document ID' });
     }
